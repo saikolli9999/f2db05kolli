@@ -1,9 +1,8 @@
-var express = require('express');
-var router = express.Router();
-
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('engines', { title: 'Search Results Engines' });
-});
+var express = require('express'); 
+const engine_controllers= require('../controllers/engine'); 
+var router = express.Router(); 
+ 
+/* GET costumes */ 
+router.get('/', engine_controllers.engine_view_all_Page); 
 
 module.exports = router;
