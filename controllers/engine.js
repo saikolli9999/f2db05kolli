@@ -61,9 +61,17 @@ exports.engine_create_post = async function (req, res) {
 };
 
 // Handle Engine delete form on DELETE. 
-exports.engine_delete = function (req, res) {
-    res.send('NOT IMPLEMENTED: Engine delete DELETE ' + req.params.id);
-};
+exports.engine_delete = async function(req, res) { 
+    console.log("delete "  + req.params.id) 
+    try { 
+        result = await Engine.findByIdAndDelete( req.params.id) 
+        console.log("Removed " + result) 
+        res.send(result) 
+    } catch (err) { 
+        res.status(500) 
+        res.send(`{"error": Error deleting ${err}}`); 
+    } 
+}; 
 
 // Handle Engine update form on PUT. 
 exports.engine_update_put = async function (req, res) {
@@ -86,4 +94,30 @@ exports.engine_update_put = async function (req, res) {
         res.status(500)
         res.send(`{"error": ${err}: Update for id ${req.params.id} failed`);
     }
+}; 
+
+// Handle a show one view with id specified by query 
+exports.engine_view_one_Page = async function(req, res) { 
+    console.log("single view for id "  + req.query.id) 
+    try{ 
+        result = await Engine.findById(req.query.id) 
+        res.render('enginedetails',{ title: 'Engine Detail', toShow: result }); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
+};
+// Handle building the view for creating a costume. 
+// No body, no in path parameter, no query. 
+// Does not need to be async 
+exports.engine_create_Page =  function(req, res) { 
+    console.log("create view") 
+    try{ 
+        res.render('enginecreate', { title: 'Engine Create'}); 
+    } 
+    catch(err){ 
+        res.status(500) 
+        res.send(`{'error': '${err}'}`); 
+    } 
 }; 
