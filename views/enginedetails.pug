@@ -2,25 +2,27 @@ extends layout
  
 block content 
   h1= title 
- 
-  - let Engineid = toShow._id
-  - let EngineType = toShow.EngineType 
-  - let Cylinders = toShow.Cylinders 
-  - let FuelType = toShow.FuelType
-  - let Transmission = toShow.Transmission
-  div 
-    div.row 
-      div(class='engineAttr mr-3') Engine ID is: 
-      div #{Engineid} 
-    div.row 
-      div(class='engineAttr mr-3') Engine Type is: 
-      div #{EngineType} 
-    div.row 
-      div(class='engineAttr mr-3') No of Cylinders are: 
-      div #{Cylinders} 
-    div.row 
-      div(class='engineAttr mr-3') Fuel Type is: 
-      div #{FuelType}
-    div.row 
-      div(class='engineAttr mr-3') Transmission is: 
-      div #{Transmission}  
+  if (toShow == null) 
+    h2 No instance to display 
+  else 
+    - let Engineid = toShow._id
+    - let EngineType = toShow.EngineType 
+    - let Cylinders = toShow.Cylinders 
+    - let FuelType = toShow.FuelType
+    - let Transmission = toShow.Transmission
+    div 
+      div.row 
+        div(class='engineAttr mr-3') Engine ID is: 
+        div #{Engineid} 
+      div.row 
+        div(class='engineAttr mr-3') Engine Type is: 
+        div #{EngineType} 
+      div.row 
+        div(class='engineAttr mr-3') No of Cylinders are: 
+        div #{Cylinders} 
+      div.row 
+        div(class='engineAttr mr-3') Fuel Type is: 
+        div #{FuelType}
+      div.row 
+        div(class='engineAttr mr-3') Transmission is: 
+        div #{Transmission}  
