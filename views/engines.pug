@@ -8,7 +8,9 @@ block content
     each item in EngineResults
       - let destination = `dispatch(\"/engines/update?id=${item._id}\")`
       div(class="col-sm-2", class="m-1", width="215px") Engine Type:#{item.EngineType}, Cylinders:#{item.Cylinders}, FuelType:#{item.FuelType}, Transmission:#{item.Transmission}
-        button.btn( class="btn-primary ml-1", onclick= destination) Update 
+        button.btn( class="btn-primary ml-1", onclick= destination) Update
+        button.btn( class="btn-success", onclick= detail) Details
+        button.btn( class="btn-danger", onclick= deleteItem) Delete
   br
   div(class="container-fluid")
     div(class="row")

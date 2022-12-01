@@ -90,20 +90,6 @@ app.use(function(err, req, res, next) {
   res.render('error');
 });
 
-// passport.use(new LocalStrategy( 
-//   function(username, password, done) { 
-//     Account.findOne({ username: username }, function (err, user) { 
-//       if (err) { return done(err); } 
-//       if (!user) { 
-//         return done(null, false, { message: 'Incorrect username.' }); 
-//       } 
-//       if (user.password !=password ) { 
-//         return done(null, false, { message: 'Incorrect password.' }); 
-//       } 
-//       return done(null, user); 
-//     }); 
-//   })); 
-
 // We can seed the collection if needed on server start 
 async function recreateDB(){ 
   // Delete everything 
